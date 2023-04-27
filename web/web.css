@@ -47,14 +47,28 @@ div.right_content {
     /* border: 1px solid red; */
 }
 
-div > table {
+table.course_table {
     width: 98%;
     margin: auto;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-div tr, th, td{
+tr.course_table {
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td.course_table {
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th.course_table {
     width: 10%;
     height: 50px;
     border: 1px solid black;
