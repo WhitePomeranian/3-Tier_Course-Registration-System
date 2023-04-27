@@ -5,7 +5,7 @@ html {
 
 body {
     margin: auto;
-    width: 70%;
+    width: 95%;
     background-color: rgb(59, 59, 59);
     /* border: 1px solid red; */
 }
@@ -46,3 +46,33 @@ div.right_content {
     width: 80%;
     /* border: 1px solid red; */
 }
+
+table.course_table {
+    width: 98%;
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr.course_table {
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td.course_table {
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th.course_table {
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
