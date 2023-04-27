@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="web.css">
     <title>
         選課系統
     </title>
@@ -28,17 +28,192 @@
                 <P>學分上限:30</P>
                 <p>學分下限:9</p>
             </fieldset>
+            <fieldset>
+            	<legend>系統操作原則</legend>
+            </fieldset>
+            <fieldset>
+            	<legend>注意事項</legend>
+            </fieldset>
         </div>
         <div class="right_content">
             <!-- <p>right</p> -->
             <fieldset>
-                <legend>查詢課程</legend>
-                <label for="search_course_id">查詢選課代碼</label>
-                <input type="number" inputmode="numeric">
-                <button>查詢</button>
+            	<legend>查詢課程</legend>
+            	<form action="user_interface.jsp" method="post">
+	                <label for="section_code">查詢選課代碼</label>
+	                <input type="text" inputmode="numeric" maxlength=4 name="section_code" id="section_code">
+	                <button type="submit">查詢</button>
+	            </form>
             </fieldset>
-        </div>
-    </div>
+            
+ 
+			<fieldset>
+				<legend>課程加選</legend>
+				<form action="user_interface.jsp" method="post">
+				</form>
+			</fieldset>
+			<fieldset>
+            	<legend>已選課表</legend>
+            	<div>
+	            	<table>
+                        <div>
+                            <tr>
+                                <th></th>
+                                <th>星期一</th>
+                                <th>星期二</th>
+                                <th>星期三</th>
+                                <th>星期四</th>
+                                <th>星期五</th>
+                                <th>星期六</th>
+                                <th>星期日</th>
+                            </tr>
+                            <tr>
+                                <th>1<br>08:10~09:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>2<br>09:10~10:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>3<br>10:10~11:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>4<br>11:10~12:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>5<br>12:10~13:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>6<br>13:10~14:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>7<br>14:10~15:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>8<br>15:10~16:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>9<br>16:10~17:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>10<br>17:10~18:00</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>11<br>18:30~19:20</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>12<br>19:25~20:15</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>13<br>20:25~21:15</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>14<br>21:20~22:10</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </div>
+	            		
+	            	</table>
+            	</div>
+            	
+            </fieldset>
+		</div>
+	</div>
 </body>
-
 </html>

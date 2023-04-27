@@ -1,10 +1,11 @@
+@charset "UTF-8";
 html {
     background-color: rgb(69, 69, 69);
 }
 
 body {
     margin: auto;
-    width: 70%;
+    width: 95%;
     background-color: rgb(59, 59, 59);
     /* border: 1px solid red; */
 }
@@ -44,4 +45,18 @@ legend {
 div.right_content {
     width: 80%;
     /* border: 1px solid red; */
+}
+
+div > table {
+    width: 98%;
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+div tr, th, td{
+    width: 10%;
+    height: 50px;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
