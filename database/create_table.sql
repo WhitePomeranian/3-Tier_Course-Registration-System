@@ -21,7 +21,7 @@ CREATE TABLE Course (
     offer_dept     CHAR(255) NOT NULL,
     grade          INT NOT NULL,
     credit         INT NOT NULL,
-    type           CHAR(255) NOT NULL,
+    course_type    CHAR(255) NOT NULL,
     PRIMARY KEY(course_id), 
     FOREIGN KEY(offer_dept) REFERENCES Department(dept_name)
 );
@@ -40,10 +40,10 @@ CREATE TABLE Section (
     offer_class     CHAR(255) NOT NULL,
     max_enrollment  INT NOT NULL,
     cur_enrollment  INT NOT NULL,
---     course_id       INT NOT NULL,
+    course_id       INT NOT NULL,
     instructor_id   INT NOT NULL,
     PRIMARY KEY(section_code),
---     FOREIGN KEY(course_id)     REFERENCES Course(course_id),
+    FOREIGN KEY(course_id)     REFERENCES Course(course_id),
     FOREIGN KEY(instructor_id) REFERENCES Instructor(instructor_id)
 ); 
 

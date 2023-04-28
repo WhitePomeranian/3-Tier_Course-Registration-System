@@ -104,8 +104,8 @@ VALUES("纖維與複合材料學系", "工程與科學學院");
 */
 
 /*-----------------------------INSERT INTO Student-----------------------------------*/
-INSERT INTO Student VALUES ('D1059887','劉宥宏',2,'丁','資訊工程學系',0);
-INSERT INTO Student VALUES ('D1059754','陳螢霆',2,'丁','資訊工程學系',0);
+INSERT INTO Student VALUES ('D1059887','劉宥宏',2,'丁','資訊工程學系',31);
+INSERT INTO Student VALUES ('D1059754','陳螢霆',2,'丁','資訊工程學系',9);
 INSERT INTO Student VALUES ('D1060106','蔡明憲',2,'丁','資訊工程學系',0);
 INSERT INTO Student VALUES ('D1060064','林勤恩',2,'丁','資訊工程學系',0);
 INSERT INTO Student VALUES ('D1093071','林珈辰',2,'丁','資訊工程學系',0);
@@ -408,20 +408,20 @@ VALUES(1, "劉宗杰", "資訊工程學系"),
       (, "", "資訊工程學系");
 */
 /*-----------------------------INSERT INTO Section-----------------------------------*/
-INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',7,7,1);
-INSERT INTO Section VALUES (1261,'資料庫系統','資訊二丁',7,7,2);
-INSERT INTO Section VALUES (1262,'機率與統計','資訊二丁',7,6,3);
-INSERT INTO Section VALUES (1263,'互連網路','資訊二丁',7,5,1);
-INSERT INTO Section VALUES (1264,'多媒體系統','資訊二丁',7,6,4);
-INSERT INTO Section VALUES (1265,'組合數學','資訊二丁',7,6,5);
-INSERT INTO Section VALUES (1267,'數位系統設計','資訊二丁',6,3,6);
-INSERT INTO Section VALUES (1268,'數位系統設計實驗','資訊二丁',6,3,6);
-INSERT INTO Section VALUES (1269,'UNIX應用與實務','資訊二丁',7,7,7);
-INSERT INTO Section VALUES (3543,'Web程式設計','資訊二丁',6,6,8);
-INSERT INTO Section VALUES (3545,'系統分析與設計','資訊二丁',7,4,9);
-INSERT INTO Section VALUES (3547,'UNIX應用與實務','資訊二丁',7,6,10);
-INSERT INTO Section VALUES (3551,'電子商務安全','資訊二丁',7,6,11);
-INSERT INTO Section VALUES (3552,'電子商務安全','資訊二丁',7,7,12);
+INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',7,2,1260,31);
+INSERT INTO Section VALUES (1261,'資料庫系統','資訊二丁',7,2,1261,25);
+INSERT INTO Section VALUES (1262,'機率與統計','資訊二丁',7,2,1262,32);
+-- INSERT INTO Section VALUES (1263,'互連網路','資訊二丁',7,5,1);
+-- INSERT INTO Section VALUES (1264,'多媒體系統','資訊二丁',7,6,4);
+-- INSERT INTO Section VALUES (1265,'組合數學','資訊二丁',7,6,5);
+-- INSERT INTO Section VALUES (1267,'數位系統設計','資訊二丁',6,3,6);
+-- INSERT INTO Section VALUES (1268,'數位系統設計實驗','資訊二丁',6,3,6);
+-- INSERT INTO Section VALUES (1269,'UNIX應用與實務','資訊二丁',7,7,7);
+-- INSERT INTO Section VALUES (3543,'Web程式設計','資訊二丁',6,6,8);
+-- INSERT INTO Section VALUES (3545,'系統分析與設計','資訊二丁',7,4,9);
+-- INSERT INTO Section VALUES (3547,'UNIX應用與實務','資訊二丁',7,6,10);
+-- INSERT INTO Section VALUES (3551,'電子商務安全','資訊二丁',7,6,11);
+-- INSERT INTO Section VALUES (3552,'電子商務安全','資訊二丁',7,7,12);
 /*
 INSERT INTO Section 
 VALUES(1260, "系統程式", "資訊二丁", 70, 70, 1),
