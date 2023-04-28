@@ -191,7 +191,7 @@
 			<fieldset>
 				<legend>已選課表</legend>
             	<table class="course_table">
-                    <tr class="course_table">
+                    <tr style="width: 10%; height: 50px; border: 1px solid black; border-collapse: collapse;">
                         <th class="course_table"></th>
                         <th class="course_table">星期一</th>
                         <th class="course_table">星期二</th>

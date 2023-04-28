@@ -28,7 +28,7 @@ div.content {
 }
 
 div.left_content {
-    width: 15%;
+    width: 20%;
     /* border: 1px solid red; */
 }
 
@@ -43,7 +43,7 @@ legend {
 }
 
 div.right_content {
-    width: 85%;
+    width: 80%;
     /* border: 1px solid red; */
 }
 
@@ -74,6 +74,3 @@ th.course_table {
     border: 1px solid black;
     border-collapse: collapse;
 }
-
-
-
