@@ -8,16 +8,6 @@ CREATE TABLE Student (
     student_id      CHAR(255) NOT NULL UNIQUE,
     student_name    CHAR(255) NOT NULL,
     grade           INT NOT NULL,
-CREATE TABLE Department (
-    dept_name       CHAR(255)  NOT NULL UNIQUE,
-    dept_position   CHAR(255)  NOT NULL,
-    PRIMARY KEY(dept_name)
-); 
-
-CREATE TABLE Student (
-    student_id      CHAR(255) NOT NULL UNIQUE,
-    student_name    CHAR(255) NOT NULL,
-    grade           INT NOT NULL,
     class           CHAR(255) NOT NULL,
     department      CHAR(255) NOT NULL,
     selected_credit INT NOT NULL,
