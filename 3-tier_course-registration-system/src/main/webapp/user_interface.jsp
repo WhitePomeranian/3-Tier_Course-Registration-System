@@ -117,10 +117,47 @@
 								element2 = rs.getString("section_name");
 								out.println("<tr>");
 								out.println("<td>");
-								out.println("<button id=\"add\" type=\"submit\">" + "加選" + "</button>");
-								out.println("<script src=\"user_interface.js\">");
-								out.println("add_section()");
-								out.println("</script>");
+								
+								
+								
+								out.println("<button id=\"add\" type=\"submit\" ");
+								out.println("onclick=\"add_section(" + element1 + ")\"'>");
+								out.println("加選");
+								out.println("</button>");
+								
+								
+								
+								
+				%>				
+								<script>
+									function add_section(section_code) {
+										// 創建一個XMLHttpRequest物件
+									    var xhttp = new XMLHttpRequest();
+										
+									 	// 當請求完成時觸發的函數
+									    xhttp.onreadystatechange = function() {
+									 		
+									    	if (this.readyState == 4 && this.status == 200) {
+									    		//alert("this.readyState =" + this.readyState);
+									    		//alert("this.status =" + this.status);
+									    		// 接收到後端返回的資料
+									    	    var message = xhttp.responseText;
+									    	    // 在前端印出訊息
+									    	    alert(message);
+											} else {
+												//alert("this.readyState =" + this.readyState);
+									    		//alert("this.status =" + this.status);
+											}		
+										};
+										xhttp.open("POST", "add_section.jsp", true);  // 假設後端程式與前端頁面在同一目錄中
+										xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+										xhttp.send("section_code=section_code"); // 傳遞需要的argument
+											
+									    
+									}
+								</script>
+								
+				<%				
 								out.println("<td>");
 								out.println(element1);
 								out.println("</td>");
@@ -128,7 +165,8 @@
 								out.println(element2);
 								out.println("</td>");
 								out.println("</tr>");
-								
+							
+				
 						    }
 						    out.println("</table>");	
 						    
@@ -319,20 +357,20 @@
 		</div>
 	</div>
 	<%  // 此段顯示必修的程式一定要放在table後面，否則無法識別id!!!
-			try {
+		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();  // 載入驅動程式
 		    Connection conn = DriverManager.getConnection(url);       // 建立連線
-		    Statement stmt = conn.createStatement();				  //
+		    Statement stmt = conn.createStatement();				  
 			sql = "SELECT student_id, TimeSlot.section_code, section_name, week_time, starting_time, ending_time FROM SelectDetail INNER JOIN Section ON SelectDetail.section_code = Section.section_code RIGHT JOIN TimeSlot ON SelectDetail.section_code = TimeSlot.section_code WHERE student_id = \"D1059887\";";
 		    ResultSet rs = stmt.executeQuery(sql);  
-			
+		
 			while(rs.next()) {
 				element1 = rs.getString("TimeSlot.section_code");  
 				element2 = rs.getString("section_name");
 				element3 = rs.getString("week_time");
 				element4 = rs.getString("starting_time");
 				element5 = rs.getString("ending_time");
-	%>			
+%>			
 				<script>
 			        function required(week_time, starting_time ,ending_time, section_name) {
 			        	var target_id = week_time + "_" + starting_time;
@@ -358,14 +396,14 @@
 			         
 
 			    </script>
-	<%	}      
+	<%	
+			}      
 		    //關閉連線  
 		    rs.close();  
 		    stmt.close();  
 		    conn.close(); 
-		} catch (Exception e) {
+		} catch(Exception e) {
 		    e.printStackTrace();
-		    out.println("<p style=\"text-align:center; color:green;\">" + "與資料庫連線失敗" + "</p>");
 		}
 	%>	
 </body>
