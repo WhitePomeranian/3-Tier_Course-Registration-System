@@ -13,6 +13,61 @@
 </head>
 
 <body>
+	<%
+		// my database information
+		String server = "localhost";
+		String database = "course-registration-system_schema";
+		String user = "root";
+		String password = "BlackPomeranian";
+		int port = 3306;
+		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
+		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
+		
+		String sql = "\0";  // my sql statement
+		String target;      // used to receive parameters
+		String element1;
+		String element2;
+		String element3;
+		String element4;
+		String element5;
+		String element6;
+		
+		boolean flag = true;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();  // 載入驅動程式
+		    Connection conn = DriverManager.getConnection(url);       // 建立連線
+		    Statement stmt = conn.createStatement();
+			sql = "SELECT student_id, TimeSlot.section_code, section_name, week_time, starting_time, ending_time FROM SelectDetail INNER JOIN Section ON SelectDetail.section_code = Section.section_code RIGHT JOIN TimeSlot ON SelectDetail.section_code = TimeSlot.section_code;";
+		    ResultSet rs = stmt.executeQuery(sql);  
+		    
+		    element1 = rs.getString("TimeSlot.section_code");  
+			element2 = rs.getString("section_name");
+			element3 = rs.getString("week_time");
+			element4 = rs.getString("starting_time");
+			element5 = rs.getString("ending_time");
+			
+			while(rs.next()) {
+				element1 = rs.getString("TimeSlot.section_code");  
+				element2 = rs.getString("section_name");
+				element3 = rs.getString("week_time");
+				element4 = rs.getString("starting_time");
+				element5 = rs.getString("ending_time");
+				
+			}
+		      
+		    //關閉連線  
+		    rs.close();  
+		    stmt.close();  
+		    conn.close(); 
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    //out.println("<p style=\"text-align:center; color:green;\">" + "與資料庫連線失敗" + "</p>");
+		}
+			
+		
+		
+	%>
     <div class="header">
         <h1>選課系統</h1>
         <hr>
@@ -53,38 +108,27 @@
 				<form action="user_interface.jsp" method="post">
 
 				<%
-					String server = "localhost";
-					String database = "course-registration-system_schema";
-					String user = "root";
-					String password = "BlackPomeranian";
-					int port = 3306;
-					String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
-					    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 					
-					String target = request.getParameter("section_code");
-					String element1;
-					String element2;
-					boolean flag = true;
+					target = request.getParameter("section_code");
+					
+					flag = true;
 					
 					if(target != null) {
 						try {
 							Class.forName("com.mysql.cj.jdbc.Driver").newInstance();  // 載入驅動程式
 						    Connection conn = DriverManager.getConnection(url);       // 建立連線
 						    Statement stmt = conn.createStatement();
-						    //String sql="select * from Section WHERE section_code LIKE " + target;
-						    String sql="select * from Section;";
+						    sql = "SELECT * FROM Section WHERE section_code LIKE " + target + ";";
+						    //sql = "SELECT * FROM Section;";
 						    ResultSet rs = stmt.executeQuery(sql);  
-						      
-							// 找不到任何資料
-							//if (rs.getRow() == 0) {
-							//	out.println("<p style=\"text-align:center; color:red;\">" + "找不到課程" + "</p>");
-							//} 
 						    
 						    
 						    //依據資料庫中的欄位名列印資料 
 						    out.println("<table border=\"1px solid\"  style=\"font-size: 20px; border-collapse: collapse;\">");
 						   
 						    while(rs.next()){
+						    	
+						    	// the header is printed only once
 						    	if(flag) {
 						    		out.println("<tr>");
 						    	    out.println("</td>");
@@ -98,6 +142,7 @@
 						    	    out.println("</tr>");
 						    	    flag = false;
 						    	} 
+						    	
 						    	element1 = rs.getString("section_code");  
 								element2 = rs.getString("section_name");
 								out.println("<tr>");
@@ -112,14 +157,22 @@
 								out.println("</tr>");
 								
 						    }
-						    out.println("</table>");
+						    out.println("</table>");	
+						    
+						  	 
+						    
 						        
-						          
-						     
-						    //關閉連線  
+						 	// 找不到任何資料
+							sql = "SELECT COUNT(*) AS row_count FROM Section WHERE section_code LIKE " + target + ";";
+							rs = stmt.executeQuery(sql);
+							if(rs.next() && rs.getString("row_count").equals("0")){
+								out.println("<p style=\"text-align:center; color:red;\">" + "找不到課程資料" + "</p>");
+						 	}
+							
+							//關閉連線  
 						    rs.close();  
 						    stmt.close();  
-						    conn.close(); 
+						    conn.close();
 						} catch (Exception e) {
 						    e.printStackTrace();
 						    out.println("<p style=\"text-align:center; color:green;\">" + "請輸入選課代碼" + "</p>");

@@ -56,14 +56,14 @@ table.course_table {
 
 tr.course_table {
     width: 10%;
-    height: 50px;
+    height: 75px;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
 td.course_table {
     width: 10%;
-    height: 50px;
+    height: 75px;
     border: 1px solid black;
     border-collapse: collapse;
 }
