@@ -19,7 +19,7 @@ CREATE TABLE Course (
     course_id      INT  NOT NULL UNIQUE,
     course_name    CHAR(255) NOT NULL,
     offer_dept     CHAR(255) NOT NULL,
-    grade          INT NOT NULL,
+    grade          INT,
     credit         INT NOT NULL,
     course_type    CHAR(255) NOT NULL,
     PRIMARY KEY(course_id), 
