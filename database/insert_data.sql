@@ -169,20 +169,20 @@ VALUES("D1059887", "劉宥宏", 2, "丁", "資訊工程學系", 9),
       ("D1061234", "蔡闇法", 2, "丁", "電機工程學系", 0);
 */
 /*-----------------------------INSERT INTO Course------------------------------------*/
-INSERT INTO Course VALUES (1260,'系統程式','資訊工程學系',2,3,'必修');
-INSERT INTO Course VALUES (1261,'資料庫系統','資訊工程學系',2,3,'必修');
-INSERT INTO Course VALUES (1262,'機率與統計','資訊工程學系',2,3,'必修');
-INSERT INTO Course VALUES (1263,'互連網路','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (1264,'多媒體系統','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (1265,'組合數學','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (1267,'數位系統設計','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (1268,'數位系統設計實驗','資訊工程學系',2,1,'選修');
-INSERT INTO Course VALUES (1269,'UNIX應用與實務','資訊工程學系',2,2,'選修');
-INSERT INTO Course VALUES (3543,'Web程式設計','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (3545,'系統分析與設計','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (3547,'UNIX應用與實務','資訊工程學系',2,2,'選修');
-INSERT INTO Course VALUES (3551,'電子商務安全','資訊工程學系',2,3,'選修');
-INSERT INTO Course VALUES (3552,'電子商務安全','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (1,'系統程式','資訊工程學系',2,3,'必修');
+INSERT INTO Course VALUES (2,'資料庫系統','資訊工程學系',2,3,'必修');
+INSERT INTO Course VALUES (3,'機率與統計','資訊工程學系',2,3,'必修');
+INSERT INTO Course VALUES (4,'互連網路','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (5,'多媒體系統','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (6,'組合數學','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (7,'數位系統設計','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (8,'數位系統設計實驗','資訊工程學系',2,1,'選修');
+INSERT INTO Course VALUES (9,'UNIX應用與實務','資訊工程學系',2,2,'選修');
+INSERT INTO Course VALUES (10,'Web程式設計','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (11,'系統分析與設計','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (12,'UNIX應用與實務','資訊工程學系',2,2,'選修');
+INSERT INTO Course VALUES (13,'電子商務安全','資訊工程學系',2,3,'選修');
+INSERT INTO Course VALUES (14,'電子商務安全','資訊工程學系',2,3,'選修');
 /*
 INSERT INTO Course 
 VALUES(1260, "系統程式", "資訊工程學系", 2, 3, "必修"),
@@ -408,9 +408,10 @@ VALUES(1, "劉宗杰", "資訊工程學系"),
       (, "", "資訊工程學系");
 */
 /*-----------------------------INSERT INTO Section-----------------------------------*/
-INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',7,7,1260,31);
-INSERT INTO Section VALUES (1261,'資料庫系統','資訊二丁',7,2,1261,25);
-INSERT INTO Section VALUES (1262,'機率與統計','資訊二丁',7,2,1262,32);
+INSERT INTO Section VALUES (1252,'系統程式','資訊二丙',7,0,1,14);
+INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',7,7,1,31);
+INSERT INTO Section VALUES (1261,'資料庫系統','資訊二丁',7,2,2,25);
+INSERT INTO Section VALUES (1262,'機率與統計','資訊二丁',7,2,3,32);
 -- INSERT INTO Section VALUES (1263,'互連網路','資訊二丁',7,5,1);
 -- INSERT INTO Section VALUES (1264,'多媒體系統','資訊二丁',7,6,4);
 -- INSERT INTO Section VALUES (1265,'組合數學','資訊二丁',7,6,5);
@@ -469,7 +470,9 @@ VALUES("D1059887", 1260),
 /*-----------------------------INSERT INTO LectureDetail-----------------------------*/
 /*-----------------------------INSERT INTO TimeSlot----------------------------------*/
 INSERT INTO TimeSlot
-VALUES(1260, 1, 3, 4),
+VALUES(1252, 1, 3, 4),
+	  (1252, 2, 4, 4),
+	  (1260, 1, 3, 4),
 	  (1260, 4, 4, 4),
 	  (1261, 1, 6, 6),
 	  (1261, 2, 3, 4),
