@@ -409,10 +409,10 @@ VALUES(1, "劉宗杰", "資訊工程學系"),
 */
 /*-----------------------------INSERT INTO Section-----------------------------------*/
 INSERT INTO Section VALUES (1252,'系統程式','資訊二丙',7,0,1,14);
-INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',7,7,1,31);
+INSERT INTO Section VALUES (1260,'系統程式','資訊二丁',8,7,1,31);
 INSERT INTO Section VALUES (1261,'資料庫系統','資訊二丁',7,2,2,25);
 INSERT INTO Section VALUES (1262,'機率與統計','資訊二丁',7,2,3,32);
--- INSERT INTO Section VALUES (1263,'互連網路','資訊二丁',7,5,1);
+INSERT INTO Section VALUES (1263,'互連網路','資訊二丁',7,0,4,31);
 -- INSERT INTO Section VALUES (1264,'多媒體系統','資訊二丁',7,6,4);
 -- INSERT INTO Section VALUES (1265,'組合數學','資訊二丁',7,6,5);
 -- INSERT INTO Section VALUES (1267,'數位系統設計','資訊二丁',6,3,6);
@@ -477,5 +477,6 @@ VALUES(1252, 1, 3, 4),
 	  (1261, 1, 6, 6),
 	  (1261, 2, 3, 4),
 	  (1262, 1, 7, 7),
-	  (1262, 4, 7, 8);
+	  (1262, 4, 7, 8),
+      (1263, 3, 6, 8);
      
