@@ -23,7 +23,7 @@
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 		
-		String sql = "\0";  // my sql statement
+		String sql = "";  // my sql statement
 		String target;      // used to receive parameters
 		String element1;
 		String element2;
@@ -138,15 +138,15 @@
 									    xhttp.onreadystatechange = function() {
 									 		
 									    	if (this.readyState == 4 && this.status == 200) {
-									    		//alert("this.readyState =" + this.readyState);
-									    		//alert("this.status =" + this.status);
+									    		alert("this.readyState =" + this.readyState);
+									    		alert("this.status =" + this.status);
 									    		// 接收到後端返回的資料
 									    	    var message = xhttp.responseText;
 									    	    // 在前端印出訊息
 									    	    alert(message);
 											} else {
-												//alert("this.readyState =" + this.readyState);
-									    		//alert("this.status =" + this.status);
+												alert("this.readyState =" + this.readyState);
+									    		alert("this.status =" + this.status);
 											}		
 										};
 										xhttp.open("POST", "add_section.jsp", true);  // 假設後端程式與前端頁面在同一目錄中
@@ -174,11 +174,15 @@
 						    
 						        
 						 	// 找不到任何資料
+						 	Statement stmt_2 = conn.createStatement();
 							sql = "SELECT COUNT(*) AS row_count FROM Section WHERE section_code LIKE " + target + ";";
-							rs = stmt.executeQuery(sql);
-							if(rs.next() && rs.getString("row_count").equals("0")){
+							ResultSet rs_2 = stmt_2.executeQuery(sql);
+							if(rs_2.next() && rs_2.getString("row_count").equals("0")){
 								out.println("<p style=\"text-align:center; color:red;\">" + "找不到課程資料" + "</p>");
 						 	}
+							
+							rs_2.close();
+							stmt_2.close();
 							
 							//關閉連線  
 						    rs.close();  
