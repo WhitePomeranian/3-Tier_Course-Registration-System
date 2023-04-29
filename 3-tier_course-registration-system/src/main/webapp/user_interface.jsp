@@ -138,20 +138,21 @@
 									    xhttp.onreadystatechange = function() {
 									 		
 									    	if (this.readyState == 4 && this.status == 200) {
-									    		alert("this.readyState =" + this.readyState);
-									    		alert("this.status =" + this.status);
+
 									    		// 接收到後端返回的資料
 									    	    var message = xhttp.responseText;
 									    	    // 在前端印出訊息
 									    	    alert(message);
+									    	    location.reload();
+									    	  	
 											} else {
-												alert("this.readyState =" + this.readyState);
-									    		alert("this.status =" + this.status);
+												//alert("this.readyState =" + this.readyState);
+									    		//alert("this.status =" + this.status);
 											}		
 										};
 										xhttp.open("POST", "add_section.jsp", true);  // 假設後端程式與前端頁面在同一目錄中
 										xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-										xhttp.send("section_code=section_code"); // 傳遞需要的argument
+										xhttp.send("section_code=" + section_code); // 傳遞需要的argument
 											
 									    
 									}
