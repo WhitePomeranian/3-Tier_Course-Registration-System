@@ -15,7 +15,6 @@
 		String sql = "";         // my sql statement
 		String target;      // used to receive parameters
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
-		//int section_code = 1263;
 		String section_name;
 		int max_enrollment;
 		int cur_enrollment;
