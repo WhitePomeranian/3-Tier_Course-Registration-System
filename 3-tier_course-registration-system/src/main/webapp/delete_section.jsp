@@ -50,12 +50,14 @@
 						
 						selected_credit = rs_2.getInt("selected_credit");
 						credit = rs_3.getInt("credit");
-						if(selected_credit - credit <= 9) {      //改
+						/*
+						if(selected_credit - credit < 9) {      //改
 							String message = "已選學分不得少於9!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
 						}
+						*/
 				 	}
 			    	
 			    	section_name = rs.getString("section_name");  
@@ -120,7 +122,7 @@
 					//String sql_5 = "INSERT INTO SelectDetail VALUES(\"" + user_id + "\"," + section_code + ")";
 					
 					stmt_5.executeUpdate(sql_5);
-					sql_5 = "UPDATE Student SET selected_credit = " + (selected_credit + credit) + " WHERE student_id = \"" + user_id + "\";"; 
+					sql_5 = "UPDATE Student SET selected_credit = " + (selected_credit - credit) + " WHERE student_id = \"" + user_id + "\";"; 
 					stmt_5.executeUpdate(sql_5);
 					sql_5 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment - 1) + " WHERE section_code = " + section_code; //改
 					stmt_5.executeUpdate(sql_5);
