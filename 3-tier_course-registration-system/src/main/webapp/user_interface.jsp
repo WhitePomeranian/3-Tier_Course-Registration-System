@@ -228,7 +228,7 @@
 									    		
 											}		
 										};
-										xhttp.open("POST", "delete_section.jsp", true);  // 假設後端程式與前端頁面在同一目錄中
+										xhttp.open("POST", "delete_section.jsp", false);  // 假設後端程式與前端頁面在同一目錄中
 										xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 										xhttp.send("section_code=" + section_code); // 傳遞需要的argument
 											
