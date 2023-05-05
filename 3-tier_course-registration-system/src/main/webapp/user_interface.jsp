@@ -40,6 +40,8 @@
 		String element4;
 		String element5;
 		String element6;
+		String element7;
+		String element8;
 		
 		boolean flag = true;
 	%>	
@@ -101,9 +103,9 @@
 						    Connection conn = DriverManager.getConnection(url);       // 建立連線
 						    Statement stmt = conn.createStatement();
 						    if(target != null) {
-						    	sql = "SELECT * FROM Section WHERE section_code LIKE " + target + ";";
+						    	sql = "SELECT section_code, section_name, credit, course_type, offer_class, instructor_name, max_enrollment, cur_enrollment FROM Section INNER JOIN Instructor ON Section.instructor_id = Instructor.instructor_id INNER JOIN Course ON Section.course_id = Course.course_id WHERE section_code LIKE " + target + ";";
 						    } else {
-						    	sql = "SELECT * FROM Section WHERE section_code LIKE " + del_target + ";";
+						    	sql = "SELECT section_code, section_name, credit, course_type, offer_class, instructor_name, max_enrollment, cur_enrollment FROM Section INNER JOIN Instructor ON Section.instructor_id = Instructor.instructor_id INNER JOIN Course ON Section.course_id = Course.course_id WHERE section_code LIKE " + del_target + ";";
 						    }
 						    
 					
@@ -111,27 +113,51 @@
 						    
 						    
 						    //依據資料庫中的欄位名列印資料 
-						    out.println("<table border=\"1px solid\"  style=\"font-size: 20px; border-collapse: collapse;\">");
+						    out.println("<table border=\"1px solid\"  style=\"font-size: 20px; border-collapse: collapse; width: 1000px; text-align: center;\">");
 						   
 						    while(rs.next()){
 						    	
 						    	// the header is printed only once
 						    	if(flag) {
 						    		out.println("<tr>");
-						    	    out.println("</td>");
-						    	    out.println("<td>");
-						    	    out.println("<td>");
+						    	    out.println("<th>");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
 						    	    out.println("選課代碼");
-						    	    out.println("</td>");
-						    	    out.println("<td>");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
 						    	    out.println("課程名稱");
-						    	    out.println("</td>");
+						    	    out.println("<th>");
+						    	    out.println("學分");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
+						    	    out.println("必選修");
+						    	    out.println("</th>");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
+						    	    out.println("開課班級");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
+						    	    out.println("授課教師");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
+						    	    out.println("已選人數");
+						    	    out.println("</th>");
+						    	    out.println("<th>");
+						    	    out.println("開放名額");
+						    	    out.println("</th>");
 						    	    out.println("</tr>");
 						    	    flag = false;
 						    	} 
 						    	
 						    	element1 = rs.getString("section_code");  
 								element2 = rs.getString("section_name");
+								element3 = rs.getString("credit");
+								element4 = rs.getString("course_type");
+								element5 = rs.getString("offer_class");
+								element6 = rs.getString("instructor_name");
+								element7 = rs.getString("max_enrollment");
+								element8 = rs.getString("cur_enrollment");
 								out.println("<tr>");
 								out.println("<td>");
 								
@@ -216,6 +242,24 @@
 								out.println("</td>");
 								out.println("<td>");
 								out.println(element2);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element3);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element4);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element5);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element6);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element8);
+								out.println("</td>");
+								out.println("<td>");
+								out.println(element7);
 								out.println("</td>");
 								out.println("</tr>");
 							
