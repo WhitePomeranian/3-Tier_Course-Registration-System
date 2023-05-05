@@ -67,8 +67,8 @@
 			    	
 			    	//必修不能退選
 			    	Statement stmt_4 = conn.createStatement();
-					String sql_4 = "SELECT course_type FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = " + section_code + ";"; 
-					//SELECT course_type FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = 1263;
+					String sql_4 = "SELECT course_type, section_name FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = " + section_code + ";"; 
+					//SELECT course_type, section_name FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = 1263;
 					ResultSet rs_4 = stmt_4.executeQuery(sql_4);
 					
 					String str1 = "必修";
@@ -76,6 +76,7 @@
 					if(rs_4.next()){	
 						
 						course_type = rs_4.getString("course_type");
+						
 						if(course_type.equals(str1)) {      
 							String message = "不能退選必修科目";
 						    response.setContentType("text/plain");
@@ -85,17 +86,40 @@
 				 	}
 					
 					
+					//不能重複退選
+			    	Statement stmt_5 = conn.createStatement();
+					String sql_5 = "SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = \"" + user_id + "\" AND SelectDetail.section_code = " + section_code + ";"; 
+					//SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = "D1060064" AND SelectDetail.section_code = 1261;
+					ResultSet rs_5 = stmt_5.executeQuery(sql_5);
+
+					if(rs_5.next()){	
+						
+						int amount = rs_5.getInt("amount");
+						
+						if(amount == 0) {      
+							String message = "不能重複退選";
+						    response.setContentType("text/plain");
+						    response.getWriter().write(message);
+						    return; // 在此處終止程式並返回訊息
+						}
+				 	}
+					
 					
 					// 可以退選課程
-					Statement stmt_5 = conn.createStatement();
+					Statement stmt_6 = conn.createStatement();
 					
-					String sql_5 = "DELETE FROM SelectDetail WHERE student_id = \"" + user_id + "\" AND section_code = " + section_code;
+					String sql_6 = "DELETE FROM SelectDetail WHERE student_id = \"" + user_id + "\" AND section_code = " + section_code;
 					
-					stmt_5.executeUpdate(sql_5);
-					sql_5 = "UPDATE Student SET selected_credit = " + (selected_credit - credit) + " WHERE student_id = \"" + user_id + "\";"; 
-					stmt_5.executeUpdate(sql_5);
-					sql_5 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment - 1) + " WHERE section_code = " + section_code; 
-					stmt_5.executeUpdate(sql_5);
+					stmt_6.executeUpdate(sql_6);
+					sql_6 = "UPDATE Student SET selected_credit = " + (selected_credit - credit) + " WHERE student_id = \"" + user_id + "\";"; 
+					stmt_6.executeUpdate(sql_6);
+					sql_6 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment - 1) + " WHERE section_code = " + section_code; 
+					stmt_6.executeUpdate(sql_6);
+					
+					
+					
+					
+					
 					
 			    	rs_2.close();
 			    	stmt_2.close();
@@ -103,7 +127,9 @@
 				  	stmt_3.close();
 				  	rs_4.close();
 				  	stmt_4.close();
+				  	rs_5.close();
 				  	stmt_5.close();
+				  	stmt_6.close();
 			    }
 				
 			    
