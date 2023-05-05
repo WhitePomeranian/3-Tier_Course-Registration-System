@@ -16,6 +16,7 @@
 		String target;      // used to receive parameters
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
 		String section_name;
+		String course_type;
 		int max_enrollment;
 		int cur_enrollment;
 		int week_time;
@@ -70,13 +71,11 @@
 					//SELECT course_type FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = 1263;
 					ResultSet rs_4 = stmt_4.executeQuery(sql_4);
 					
-					String course_type;
-
-					String str1 = "選修";
-					/*
-					if(rs_4.next()){
+					String str1 = "必修";
+					
+					if(rs_4.next()){	
 						
-						course_type = rs.getString("course_type");
+						course_type = rs_4.getString("course_type");
 						if(course_type.equals(str1)) {      
 							String message = "不能退選必修科目";
 						    response.setContentType("text/plain");
@@ -84,7 +83,7 @@
 						    return; // 在此處終止程式並返回訊息
 						}
 				 	}
-					*/
+					
 					
 					
 					// 可以退選課程
@@ -124,3 +123,5 @@
 		
 		
 %>
+
+
