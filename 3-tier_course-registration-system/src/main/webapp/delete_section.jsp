@@ -17,12 +17,7 @@
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
 		String section_name;
 		String course_type;
-		int max_enrollment;
 		int cur_enrollment;
-		int week_time;
-		int starting_time;
-		int ending_time;
-		
 		
 		// 接收前端傳遞的POST請求
 		if(request.getMethod().equalsIgnoreCase("POST")){
@@ -31,13 +26,12 @@
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();  // 載入驅動程式
 			    Connection conn = DriverManager.getConnection(url);       // 建立連線
 			    Statement stmt = conn.createStatement();
-			    sql = "SELECT Section.section_code, section_name, offer_class, max_enrollment, cur_enrollment, Instructor.instructor_name, department, week_time, starting_time, ending_time FROM Section RIGHT JOIN TimeSlot ON Section.section_code = TimeSlot.section_code LEFT JOIN Instructor ON Section.instructor_id = Instructor.instructor_id WHERE Section.section_code = " + section_code + ";";
+			    sql = "SELECT section_code, section_name, cur_enrollment FROM Section WHERE section_code = " + section_code + ";";
+			    //SELECT section_code, section_name, cur_enrollment FROM Section WHERE section_code = 1263 ;
 			    ResultSet rs = stmt.executeQuery(sql);
 			    
 			    while(rs.next()) {
-			    	
-			    	
-			    	
+			    		
 			    	//不能重複退選
 			    	Statement stmt_2 = conn.createStatement();
 					String sql_2 = "SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = \"" + user_id + "\" AND SelectDetail.section_code = " + section_code + ";"; 
@@ -55,16 +49,9 @@
 						    return; // 在此處終止程式並返回訊息
 						}
 				 	}
-					
-					
-			    	
 			    	
 			    	section_name = rs.getString("section_name");  
-			    	max_enrollment = rs.getInt("max_enrollment");
 			    	cur_enrollment = rs.getInt("cur_enrollment");
-			    	week_time = rs.getInt("week_time");
-			    	starting_time = rs.getInt("starting_time");
-			    	ending_time = rs.getInt("ending_time");
 			    	
 			    	//必修不能退選
 			    	Statement stmt_3 = conn.createStatement();
@@ -109,7 +96,6 @@
 						}
 				 	}
 					
-					
 					// 可以退選課程
 					Statement stmt_6 = conn.createStatement();
 					
@@ -120,12 +106,7 @@
 					stmt_6.executeUpdate(sql_6);
 					sql_6 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment - 1) + " WHERE section_code = " + section_code; 
 					stmt_6.executeUpdate(sql_6);
-					
-					
-					
-					
-					
-					
+							
 			    	rs_2.close();
 			    	stmt_2.close();
 				  	rs_3.close();
