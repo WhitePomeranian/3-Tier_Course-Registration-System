@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
 <%		
-
-		String user_id = "D1060064";
+		String user_id = "D1059887";
 		
 		//my database information
 		String server = "localhost";
-		String database = "course-registration-system";
+		String database = "course-registration-system_schema";
 		String user = "root";
-		String password = "eric998877";
+		String password = "BlackPomeranian";
 		int port = 3306;
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
@@ -37,13 +36,20 @@
 					String sql_2 = "SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = \"" + user_id + "\" AND SelectDetail.section_code = " + section_code + ";"; 
 					//SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = "D1060064" AND SelectDetail.section_code = 1261;
 					ResultSet rs_2 = stmt_2.executeQuery(sql_2);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6ca927f5dca3f8193ab0275642c5967556ae324b
 					if(rs_2.next()){	
 						
 						int amount = rs_2.getInt("amount");
 						
 						if(amount == 0) {      
+<<<<<<< HEAD
+							String message = "不能重複退選!";
+=======
 							String message = "不能重複退選";
+>>>>>>> 6ca927f5dca3f8193ab0275642c5967556ae324b
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
@@ -66,7 +72,7 @@
 						course_type = rs_3.getString("course_type");
 						
 						if(course_type.equals(str1)) {      
-							String message = "不能退選必修科目";
+							String message = "不能退選必修科目!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
@@ -125,13 +131,4 @@
 			    conn.close();
 			    
 			    String message = "退選成功!";
-			    response.setContentType("text/plain");
-			    response.getWriter().write(message);
-			    return; // 在此處終止程式並返回訊息
-			} catch(Exception e) {
-			    e.printStackTrace();
-			}
-		}
-		
-		
-%>
+			    response.se
