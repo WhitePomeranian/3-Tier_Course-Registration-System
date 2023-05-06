@@ -43,7 +43,7 @@
 						int amount = rs_2.getInt("amount");
 						
 						if(amount == 0) {      
-							String message = "不能重複退選";
+							String message = "不能重複退選!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
@@ -66,7 +66,7 @@
 						course_type = rs_3.getString("course_type");
 						
 						if(course_type.equals(str1)) {      
-							String message = "不能退選必修科目";
+							String message = "不能退選必修科目!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
