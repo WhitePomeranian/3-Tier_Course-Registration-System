@@ -1,5 +1,5 @@
 DROP TABLE TimeSlot;
-DROP TABLE LectureDetail;
+-- DROP TABLE LectureDetail;
 DROP TABLE SelectDetail;
 DROP TABLE Section;
 DROP TABLE Instructor;
