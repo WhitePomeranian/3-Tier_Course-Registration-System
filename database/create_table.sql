@@ -55,13 +55,13 @@ CREATE TABLE SelectDetail (
     FOREIGN KEY(section_code) REFERENCES Section(section_code)
 );
 
-CREATE TABLE LectureDetail (
-    instructor_id   INT  NOT NULL,
-    section_code    INT  NOT NULL,
-    PRIMARY KEY(instructor_id, section_code),
-    FOREIGN KEY(instructor_id) REFERENCES Instructor(instructor_id),
-    FOREIGN KEY(section_code) REFERENCES Section(section_code)
-);
+-- CREATE TABLE LectureDetail (
+--     instructor_id   INT  NOT NULL,
+--     section_code    INT  NOT NULL,
+--     PRIMARY KEY(instructor_id, section_code),
+--     FOREIGN KEY(instructor_id) REFERENCES Instructor(instructor_id),
+--     FOREIGN KEY(section_code) REFERENCES Section(section_code)
+-- );
 
 CREATE TABLE TimeSlot (
     section_code    INT  NOT NULL,
