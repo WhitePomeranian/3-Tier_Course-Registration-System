@@ -27,8 +27,8 @@
 			    
 			    //系內可選的課
 			    Statement stmt = conn.createStatement();
-			    sql = "SELECT Section.section_code, section_name, offer_dept, grade, course_type, max_enrollment, cur_enrollment, week_time, starting_time, ending_time FROM Course LEFT JOIN Section ON Course.course_id = Section.course_id RIGHT JOIN TimeSlot ON Section.section_code = TimeSlot.section_code WHERE offer_dept IN (SELECT department FROM Student WHERE student_id = \"" + user_id + "\");";
-			    //SELECT Section.section_code, section_name, offer_dept, grade, course_type, max_enrollment, cur_enrollment, week_time, starting_time, ending_time FROM Course LEFT JOIN Section ON Course.course_id = Section.course_id RIGHT JOIN TimeSlot ON Section.section_code = TimeSlot.section_code WHERE offer_dept IN (SELECT department FROM Student WHERE student_id = "D1060064");
+			    sql = "SELECT Section.section_code, section_name, offer_dept, grade, course_type, max_enrollment, cur_enrollment, week_time, starting_time, ending_time FROM Course LEFT JOIN Section ON Course.course_id = Section.course_id RIGHT JOIN TimeSlot ON Section.section_code = TimeSlot.section_code WHERE offer_dept IN (SELECT department FROM Student WHERE student_id = \"" + user_id + "\") AND course_type = \"選修\";";
+			    //SELECT Section.section_code, section_name, offer_dept, grade, course_type, max_enrollment, cur_enrollment, week_time, starting_time, ending_time FROM Course LEFT JOIN Section ON Course.course_id = Section.course_id RIGHT JOIN TimeSlot ON Section.section_code = TimeSlot.section_code WHERE offer_dept IN (SELECT department FROM Student WHERE student_id = "D1060064") AND course_type = "選修";
 			    ResultSet rs = stmt.executeQuery(sql);
 			    
 			    while(rs.next()) {
