@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
 <%		
-		String user_id = "D1060106";
-		//String user_id = request.getParameter("studentId");
+		//String user_id = "D1060106";
+		String user_id = request.getParameter("user_id");
 		//String user_id = (String) request.getAttribute("user_id");
 		
 		//my database information
