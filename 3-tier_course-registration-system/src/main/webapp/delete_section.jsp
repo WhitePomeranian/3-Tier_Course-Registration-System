@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
 <%		
-
-		String user_id = "D1060064";
+		String user_id = "D1060106";
+		//String user_id = request.getParameter("studentId");
+		//String user_id = (String) request.getAttribute("user_id");
 		
 		//my database information
 		String server = "localhost";
-		String database = "course-registration-system";
+		String database = "test";
 		String user = "root";
-		String password = "eric998877";
-		int port = 3306;
+		String password = "sam0520";
+		int port = 3307;
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 		
-		String sql = "";         // my sql statement
+		String sql = "";         	// my sql statement
+		String target;      		// used to receive parameters
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
 		String section_name;
 		String course_type;
@@ -42,7 +44,7 @@
 						int amount = rs_2.getInt("amount");
 						
 						if(amount == 0) {      
-							String message = "不能重複退選";
+							String message = "不能重複退選!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
@@ -65,7 +67,7 @@
 						course_type = rs_3.getString("course_type");
 						
 						if(course_type.equals(str1)) {      
-							String message = "不能退選必修科目";
+							String message = "不能退選必修科目!";
 						    response.setContentType("text/plain");
 						    response.getWriter().write(message);
 						    return; // 在此處終止程式並返回訊息
@@ -119,7 +121,6 @@
 				  	stmt_5.close();
 				  	stmt_6.close();
 			    }
-				
 			    
 			  	//關閉連線  
 			    rs.close(); 
@@ -134,7 +135,4 @@
 			    e.printStackTrace();
 			}
 		}
-		
-		
 %>
-
