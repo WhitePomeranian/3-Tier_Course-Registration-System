@@ -149,6 +149,4 @@
 			    e.printStackTrace();
 			}
 		}
-		
-		
 %>
