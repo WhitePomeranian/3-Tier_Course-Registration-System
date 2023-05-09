@@ -725,20 +725,70 @@
 	                        </tr>				        
 						    
 						    <%
+								pre_section_code = 0;
+								pre_section_name = "";
+								pre_offer_dept = "";
+								pre_grade = 0;
+								pre_course_type = "";
+								pre_max_enrollment = 0;
+								pre_cur_enrollment = 0;
+								pre_week_time = 0;
+								pre_starting_time = 0;
+								pre_ending_time = 0;
+								count = 0;
+							
 							    while (rs.next()) {
-							    	int section_code1 =rs.getInt("Section.section_code"); 	//課號
-						            String section_name1 = rs.getString("section_name");	//課程名稱
-						            String offer_dept1 = rs.getString("offer_dept"); 		//開課系所
-						            int grade1 = rs.getInt("grade"); 						//年級
-						            String course_type1 = rs.getString("course_type"); 		//必/選修別
-						            int max_enrollment1 = rs.getInt("max_enrollment"); 		//修課人數上限
-						            int cur_enrollment1 = rs.getInt("cur_enrollment"); 		//目前選修人數
-						            int week_time1 = rs.getInt("week_time"); 				//開課時段
-									int starting_time1 = rs.getInt("starting_time"); 		//開課時段
-									int ending_time1 = rs.getInt("ending_time"); 			//開課時段
-							        out.println("<tr><td>" + section_code1 + "</td><td>" + section_name1 + "</td><td>" + offer_dept1 + "</td><td>" + grade1 + "</td><td>" + course_type1 + "</td><td>" + max_enrollment1 + "</td><td>" + cur_enrollment1 + "</td><td>" + week_time1 + "</td><td>" + starting_time1 + "</td><td>" + ending_time1 + "</td></tr>");
+							    	int section_code = rs.getInt("Section.section_code"); 	//課號
+						            String section_name = rs.getString("section_name"); 	//課程名稱
+						            String offer_dept = rs.getString("offer_dept"); 		//開課系所
+						            int grade = rs.getInt("grade"); 						//年級
+						            String course_type = rs.getString("course_type"); 		//必/選修別
+						            int max_enrollment = rs.getInt("max_enrollment"); 		//修課人數上限
+						            int cur_enrollment = rs.getInt("cur_enrollment"); 		//目前選修人數
+						            int week_time = rs.getInt("week_time"); 				//開課時段
+									int starting_time = rs.getInt("starting_time"); 		//開課時段
+									int ending_time = rs.getInt("ending_time"); 			//開課時段
+							        
+									count++;
+									if(count == 1){
+										pre_section_code = section_code;
+										pre_section_name = section_name;
+										pre_offer_dept = offer_dept;
+										pre_grade = grade;
+										pre_course_type = course_type;
+										pre_max_enrollment = max_enrollment;
+										pre_cur_enrollment = cur_enrollment;
+										pre_week_time = week_time;
+										pre_starting_time = starting_time;
+										pre_ending_time = ending_time;
+									}else{
+										if(section_code == pre_section_code){
+											out.println("<tr>");
+											out.println("<td rowspan='2'>" + section_code + "</td><td rowspan='2'>" + section_name + "</td><td rowspan='2'>" + offer_dept + "</td><td rowspan='2'>" + grade + "</td><td rowspan='2'>" + course_type + "</td><td rowspan='2'>" + max_enrollment + "</td><td rowspan='2'>" + cur_enrollment + "</td>");
+											out.println("<td>" + pre_week_time + "</td><td>" + pre_starting_time + "</td><td>" + pre_ending_time + "</td>");
+											out.println("</tr>");
+											out.println("<tr>");
+											out.println("<td>" + week_time + "</td><td>" + starting_time + "</td><td>" + ending_time + "</td>");
+											out.println("</tr>");
+											count = 0;
+										}else{
+											out.println("<tr><td>" + pre_section_code + "</td><td>" + pre_section_name + "</td><td>" + pre_offer_dept + "</td><td>" + pre_grade + "</td><td>" + pre_course_type + "</td><td>" + pre_max_enrollment + "</td><td>" + pre_cur_enrollment + "</td><td>" + pre_week_time + "</td><td>" + pre_starting_time + "</td><td>" + pre_ending_time + "</td></tr>");
+											
+											pre_section_code = section_code;
+											pre_section_name = section_name;
+											pre_offer_dept = offer_dept;
+											pre_grade = grade;
+											pre_course_type = course_type;
+											pre_max_enrollment = max_enrollment;
+											pre_cur_enrollment = cur_enrollment;
+											pre_week_time = week_time;
+											pre_starting_time = starting_time;
+											pre_ending_time = ending_time;
+										}										
+									}
 							    }
-						    %>
+							    out.println("<tr><td>" + pre_section_code + "</td><td>" + pre_section_name + "</td><td>" + pre_offer_dept + "</td><td>" + pre_grade + "</td><td>" + pre_course_type + "</td><td>" + pre_max_enrollment + "</td><td>" + pre_cur_enrollment + "</td><td>" + pre_week_time + "</td><td>" + pre_starting_time + "</td><td>" + pre_ending_time + "</td></tr>");
+							%>
 						</table>
                 	</div>
             	</fieldset>
