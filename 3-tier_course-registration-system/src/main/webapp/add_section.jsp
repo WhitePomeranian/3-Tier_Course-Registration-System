@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
 <%		
-
-		String user_id = "D1059887";
+		String user_id = "D1060106";
+		//String user_id = request.getParameter("studentId");
+		//String user_id = (String) request.getAttribute("user_id");
 		
 		//my database information
 		String server = "localhost";
-		String database = "course-registration-system_schema";
+		String database = "test";
 		String user = "root";
-		String password = "BlackPomeranian";
-		int port = 3306;
+		String password = "sam0520";
+		int port = 3307;
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 		
@@ -145,9 +146,7 @@
 				    response.getWriter().write(message);
 				    return; // 在此處終止程式並返回訊息
 			    }
-				
-			    
-			  	
+
 			} catch(Exception e) {
 			    e.printStackTrace();
 			}
@@ -155,5 +154,3 @@
 		
 		
 %>
-
-
