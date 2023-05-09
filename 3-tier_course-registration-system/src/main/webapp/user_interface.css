@@ -84,3 +84,51 @@ th.course_table {
     position: relative;
 }
 
+.section_table {
+  max-height: 525px;
+  overflow: auto;
+}
+
+.section_table table {
+    width: 98%;
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    position: relative;
+}
+
+.section_table tr {
+    width: 7%;
+    height: 75px;
+    border: 1px solid black;    
+}
+
+.section_table tr:first-child {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: rgb(59, 59, 59);
+}
+
+.section_table tr:nth-child(2) {
+    position: sticky;
+    top: 75px;
+    z-index: auto;
+    background-color: rgb(59, 59, 59);
+}
+
+.section_table th {
+    width: 7%;
+    height: 50px;
+    border: 1px solid black;    
+    color: white;
+}
+
+.section_table td {
+    width: 7%;
+    height: 75px;
+    border: 1px solid black;
+    text-align: center;
+    color: black;
+    background-color: white;
+}
