@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
 <%				
-		String user_id = request.getParameter("user_id");		
-		
+		String user_id = request.getParameter("user_id");	
 		//my database information
 		String server = "localhost";
-		String database = "test";
+		String database = "course-registration-system";
 		String user = "root";
-		String password = "sam0520";
-		int port = 3307;
+		String password = "BlackPomeranian";
+		int port = 3306;
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 		
@@ -15,12 +14,14 @@
 		String target;      // used to receive parameters
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
 		String section_name;
-		int max_enrollment;
-		int cur_enrollment;
-		int week_time;
-		int starting_time;
-		int ending_time;
+		int max_enrollment = 0;
+		int cur_enrollment = 0;
+		int week_time = 0;
+		int starting_time = 0;
+		int ending_time = 0;
 		String message;
+		int selected_credit = 0;
+		int credit = 0;
 		
 		
 		// 接收前端傳遞的POST請求
@@ -43,8 +44,8 @@
 					String sql_3 = "SELECT credit FROM Section LEFT JOIN Course ON Section.course_id = Course.course_id WHERE section_code = " + section_code + ";";
 					ResultSet rs_3 = stmt_3.executeQuery(sql_3);
 					
-					int selected_credit = 0;
-					int credit = 0;
+					selected_credit = 0;
+					credit = 0;
 					if(rs_2.next() && rs_3.next()){
 						
 						selected_credit = rs_2.getInt("selected_credit");
@@ -113,17 +114,6 @@
 						}
 					}
 					
-					
-					
-					// 可以加選課程
-					Statement stmt_6 = conn.createStatement();
-					String sql_6 = "INSERT INTO SelectDetail VALUES(\"" + user_id + "\"," + section_code + ")";
-					stmt_6.executeUpdate(sql_6);
-					sql_6 = "UPDATE Student SET selected_credit = " + (selected_credit + credit) + " WHERE student_id = \"" + user_id + "\";"; 
-					stmt_6.executeUpdate(sql_6);
-					sql_6 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment + 1) + " WHERE section_code = " + section_code;
-					stmt_6.executeUpdate(sql_6);
-					
 			    	rs_2.close();
 			    	stmt_2.close();
 				  	rs_3.close();
@@ -132,18 +122,29 @@
 				  	stmt_4.close();
 				  	rs_5.close();
 				  	stmt_5.close();
-				  	stmt_6.close();
-				  	
-				    //關閉連線  
-				    rs.close(); 
-				    stmt.close();  
-				    conn.close();
-				    
-				    message = "加選成功!";
-				    response.setContentType("text/plain");
-				    response.getWriter().write(message);
-				    return; // 在此處終止程式並返回訊息
 			    }
+			    
+				// 可以加選課程
+				Statement stmt_6 = conn.createStatement();
+				String sql_6 = "INSERT INTO SelectDetail VALUES(\"" + user_id + "\"," + section_code + ")";
+				stmt_6.executeUpdate(sql_6);
+				sql_6 = "UPDATE Student SET selected_credit = " + (selected_credit + credit) + " WHERE student_id = \"" + user_id + "\";"; 
+				stmt_6.executeUpdate(sql_6);
+				sql_6 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment + 1) + " WHERE section_code = " + section_code;
+				stmt_6.executeUpdate(sql_6);
+				
+
+			  	stmt_6.close();
+			  	
+			    //關閉連線  
+			    rs.close(); 
+			    stmt.close();  
+			    conn.close();
+			    
+			    message = "加選成功!";
+			    response.setContentType("text/plain");
+			    response.getWriter().write(message);
+			    return; // 在此處終止程式並返回訊息
 
 			} catch(Exception e) {
 			    e.printStackTrace();
