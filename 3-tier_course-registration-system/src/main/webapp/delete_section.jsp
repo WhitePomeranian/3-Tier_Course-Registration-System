@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*" %>
-<%				
-		String user_id = request.getParameter("user_id");		
+<%		
+		
+		String user_id = request.getParameter("user_id");
 		
 		//my database information
 		String server = "localhost";
-		String database = "test";
+		String database = "course-registration-system";
 		String user = "root";
-		String password = "sam0520";
-		int port = 3307;
+		String password = "BlackPomeranian";
+		int port = 3306;
 		String url = "jdbc:mysql://" + server + ":" + port + "/" + database +
 		    "?user=" + user + "&password=" + password + "&useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC";
 		
-		String sql = "";         	// my sql statement
-		String target;      		// used to receive parameters
+		String sql = "";         // my sql statement
+		String target;      // used to receive parameters
 		int section_code = Integer.parseInt(request.getParameter("section_code"));
 		String section_name;
 		String course_type;
@@ -30,24 +31,6 @@
 			    ResultSet rs = stmt.executeQuery(sql);
 			    
 			    while(rs.next()) {
-			    		
-			    	//不能重複退選
-			    	Statement stmt_2 = conn.createStatement();
-					String sql_2 = "SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = \"" + user_id + "\" AND SelectDetail.section_code = " + section_code + ";"; 
-					//SELECT count(*) AS amount FROM Student RIGHT JOIN SelectDetail ON Student.student_id = SelectDetail.student_id LEFT JOIN Section ON SelectDetail.section_code = Section.section_code WHERE Student.student_id = "D1060064" AND SelectDetail.section_code = 1261;
-					ResultSet rs_2 = stmt_2.executeQuery(sql_2);
-
-					if(rs_2.next()){	
-						
-						int amount = rs_2.getInt("amount");
-						
-						if(amount == 0) {      
-							String message = "不能重複退選!";
-						    response.setContentType("text/plain");
-						    response.getWriter().write(message);
-						    return; // 在此處終止程式並返回訊息
-						}
-				 	}
 			    	
 			    	section_name = rs.getString("section_name");  
 			    	cur_enrollment = rs.getInt("cur_enrollment");
@@ -100,17 +83,13 @@
 					// 可以退選課程
 					Statement stmt_6 = conn.createStatement();
 					
-					String sql_6 = "DELETE FROM SelectDetail WHERE student_id = \"" + user_id + "\" AND section_code = " + section_code + ";";
-					//DELETE FROM SelectDetail WHERE student_id = "D1060064" AND section_code = 1263;
-					
+					String sql_6 = "DELETE FROM SelectDetail WHERE student_id = \"" + user_id + "\" AND section_code = " + section_code + ";";			
 					stmt_6.executeUpdate(sql_6);
 					sql_6 = "UPDATE Student SET selected_credit = " + (selected_credit - credit) + " WHERE student_id = \"" + user_id + "\";";
 					stmt_6.executeUpdate(sql_6);
 					sql_6 = "UPDATE Section SET cur_enrollment = " + (cur_enrollment - 1) + " WHERE section_code = " + section_code; 
 					stmt_6.executeUpdate(sql_6);
 							
-			    	rs_2.close();
-			    	stmt_2.close();
 				  	rs_3.close();
 				  	stmt_3.close();
 				  	rs_4.close();
