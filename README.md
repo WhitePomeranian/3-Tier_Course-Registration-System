@@ -18,6 +18,62 @@ d. 同學可以退選課程，課程退選須滿足下列限制：
 
 ### 如何使用
 
-1st: 請先安裝XAMPP和MySQL WorkBench:
-![image](https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/f5539c5e-dc9f-451e-93a2-2ed5ec4dae24){width=250 height=250}
+<b>1st: 請先安裝XAMPP(https://www.apachefriends.org/zh_tw/download.html):</b>
+和MySQL(https://www.mysql.com/downloads):
+<div align=left><img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/ea01c863-c9c6-493e-bb13-2928bdced744">
+<img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/f81454e8-05e9-480e-a5d4-98382e8bb00c" style="float:left;">
+<br><br>
+<b>2nd: 下載project後，將其解壓縮並放入XAMPP的tomcat之webapp目錄下(path: C:\xampp\tomcat\webapps):</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/85f76cd0-4617-4555-bbe4-e7991dca2c88">
+<br><br>
+<b>3rd: 開啟XAMPP Control Panel，將Tomcat啟動:</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/536073ac-97d9-4a5d-a953-17b5ea18276b">
+<br><br>
+<b>4th: 開啟MySQL Workbench，登入連線到本機(localhost，預設port: 3306)上運行的MySQL資料庫instance:</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/8e0000bb-d448-4385-a0dd-3ab833ac40fe">
+<br><br>
+<b>5th: 創立新的Schema: `course-registration-system`:</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/13584fcd-c81b-4396-ba28-a5ff380abe34">
+<img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/324121c3-bd5a-44fa-ad75-6669a9310f4f" style="float:left;">
+<img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/707e928b-32b7-44e7-8b84-db8725fad93c">
+<br><br>
+<b>6th: 新增一個query file，然後輸入以下指令並執行:</b>
+<div align=left><img src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/580cbcec-eda3-4b29-856f-15afd3106afc">
+<br><br>
+<b>7th: 開啟專案內的create_table.sql和insert_table.sql並執行:</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/a8c58b69-62ea-4e95-8696-bb242e10613a">
+<br><br>
+<b>8th: 開啟Chrome瀏覽器並輸入url: "http://localhost:8080/3-tier_course-registration-system-master/3-tier_course-registration-system/src/main/webapp/user_interface.jsp"後，就能夠進入選課系統:</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/70136ea1-32cf-45db-96fe-ccaa6fae091e">
+<br><br>
+<b>在學號欄位輸入任一insert_table.sql插入資料之學號，例如: "D1059887"，就會看到該學生的必修課程(無法退選)</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/fa2763d2-77cf-4907-895f-732f6c89e7e5">
+<br><br>
+<b>捲動至下方會看到可加選列表</b>
+<div align=left><img height="300" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/9e8c1d3e-1da2-439b-a1d6-068badb9cc29">
+<br><br>
+<b>輸入可加選列表的任一選課代碼並點擊加選，例如: "3543"，就會看到該課程被加選至課表上</b>
+<div align=left><img src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/f5cbad64-23cd-4961-8e46-66d8579718bd">
+<img width="600" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/3c3eefe9-2beb-4807-9bbb-decefa4afa4b">
+<br><br>
+<b>捲動至最下方也會條列出已加選的課程</b>
+<div align=left><img src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/91995345-9b55-47ae-8900-e0194ed63968">
+<br><br>
+<b>那最後說明如何"退選"，只需點擊課表上的課程，再點擊退選即可退選課程</b>
+<div align=left><img width="600" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/3c3eefe9-2beb-4807-9bbb-decefa4afa4b">
+<div align=left><img src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/d08d5d88-e928-4e3e-abb0-7b82ca40dd63">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
