@@ -16,8 +16,13 @@ d. 同學可以退選課程，課程退選須滿足下列限制：
     (i) 退選後學分不可低於最低學分限制 (9 學分)；  
     (ii) 必修課不可退選；
 
+<br>
+<b>註: 使用前請記得將"user_interface.jsp"、"add_section.jsp"和"delete_section.jsp"程式碼內的資料庫連線配置修改成你自己的設定<b>
+<div align=left><img src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/38dbcaca-f65e-4e58-8d78-b92d2eee482a">
+<br>
+<br>
+   
 ### 如何使用
-
 <b>1st: 請先安裝XAMPP(https://www.apachefriends.org/zh_tw/download.html):</b>
 和MySQL(https://www.mysql.com/downloads):
 <div align=left><img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/ea01c863-c9c6-493e-bb13-2928bdced744">
