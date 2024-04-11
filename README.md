@@ -17,3 +17,7 @@ d. 同學可以退選課程，課程退選須滿足下列限制：
     (ii) 必修課不可退選；
 
 ### 如何使用
+
+1st: 請先安裝XAMPP和MySQL WorkBench:
+![image](https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/f5539c5e-dc9f-451e-93a2-2ed5ec4dae24)
+
