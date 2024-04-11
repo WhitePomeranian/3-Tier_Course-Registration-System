@@ -23,8 +23,8 @@ d. 同學可以退選課程，課程退選須滿足下列限制：
 <br>
    
 ### 如何使用
-<b>1st: 請先安裝XAMPP(https://www.apachefriends.org/zh_tw/download.html):</b>
-和MySQL(https://www.mysql.com/downloads):
+<b>1st: 請先安裝XAMPP(https://www.apachefriends.org/zh_tw/download.html)
+和MySQL(https://www.mysql.com/downloads):</b>
 <div align=left><img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/ea01c863-c9c6-493e-bb13-2928bdced744">
 <img width="400" src="https://github.com/WhitePomeranian/3-tier_course-registration-system/assets/125969536/f81454e8-05e9-480e-a5d4-98382e8bb00c" style="float:left;">
 <br><br>
